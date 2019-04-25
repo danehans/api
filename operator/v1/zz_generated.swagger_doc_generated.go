@@ -188,6 +188,44 @@ func (EtcdList) SwaggerDoc() map[string]string {
 	return map_EtcdList
 }
 
+var map_ExternalDNS = map[string]string{
+	"":       "ExternalDNS describes a managed ExternalDNS controller for an OpenShift cluster. The controller supports OpenShift Service [1] and Ingress [2] resources.\n\n[1] https://kubernetes.io/docs/concepts/services-networking/service [2] https://kubernetes.io/docs/concepts/services-networking/ingress\n\nWhen an ExternalDNS is created, a new ExternalDNS controller is instantiated within the OpenShift cluster. The controller provides dns resource record management of specific service and/or ingress resources for the configured OpenShift platform type.\n\nWhenever possible, sensible defaults are used. See each field for more details.",
+	"spec":   "spec is the specification of the desired behavior of the ExternalDNS.",
+	"status": "status is the most recently observed status of the ExternalDNS.",
+}
+
+func (ExternalDNS) SwaggerDoc() map[string]string {
+	return map_ExternalDNS
+}
+
+var map_ExternalDNSList = map[string]string{
+	"": "ExternalDNSList contains a list of ExternalDNS",
+}
+
+func (ExternalDNSList) SwaggerDoc() map[string]string {
+	return map_ExternalDNSList
+}
+
+var map_ExternalDNSSpec = map[string]string{
+	"namespace":          "namespace limits the source of endpoints for creating ExternalDNS resource records to the specified namespace. If empty, defaults to the default namespace (none).",
+	"sources":            "sources limits resource types that are queried for endpoints of the given namespace. If empty, defaults to Kubernetes service and ingress source types.",
+	"publicZoneFilters":  "publicZoneFilters is one or more Public DNS zones to filter when managing external DNS resource records. If empty, defaults to spec.privateZone from dns.config/cluster.",
+	"privateZoneFilters": "privateZoneFilters is one or more Private DNS zones to filter when managing external DNS resource records. If empty, defaults to spec.publicZone from dns.config/cluster.",
+}
+
+func (ExternalDNSSpec) SwaggerDoc() map[string]string {
+	return map_ExternalDNSSpec
+}
+
+var map_ExternalDNSStatus = map[string]string{
+	"provider":   "provider is the DNS provider where DNS records will be created. Taken from infrastructure.config.openshift.io/v1",
+	"baseDomain": "baseDomain is the domain where DNS resource records are created. All records managed by ExternalDNS are sub-domains of this base.\n\nFor example, given the base domain `openshift.example.com`, an API server DNS record may be created for `api.openshift.example.com`.",
+}
+
+func (ExternalDNSStatus) SwaggerDoc() map[string]string {
+	return map_ExternalDNSStatus
+}
+
 var map_EndpointPublishingStrategy = map[string]string{
 	"":     "EndpointPublishingStrategy is a way to publish the endpoints of an IngressController, and represents the type and any additional configuration for a specific type.",
 	"type": "type is the publishing strategy to use. Valid values are:\n\n* LoadBalancerService\n\nPublishes the ingress controller using a Kubernetes LoadBalancer Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A LoadBalancer Service is created to publish the deployment.\n\nSee: https://kubernetes.io/docs/concepts/services-networking/#loadbalancer\n\nIf domain is set, a wildcard DNS record will be managed to point at the LoadBalancer Service's external name. DNS records are managed only in DNS zones defined by dns.config.openshift.io/cluster .spec.publicZone and .spec.privateZone.\n\nWildcard DNS management is currently supported only on the AWS platform.\n\n* HostNetwork\n\nPublishes the ingress controller on node ports where the ingress controller is deployed.\n\nIn this configuration, the ingress controller deployment uses host networking, bound to node ports 80 and 443. The user is responsible for configuring an external load balancer to publish the ingress controller via the node ports.\n\n* Private\n\nDoes not publish the ingress controller.\n\nIn this configuration, the ingress controller deployment uses container networking, and is not explicitly published. The user must manually publish the ingress controller.",
