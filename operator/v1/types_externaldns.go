@@ -6,6 +6,9 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 // ExternalDNS describes a managed ExternalDNS controller for an OpenShift cluster.
 // The controller supports OpenShift Service [1] and Ingress [2] resources.
 //
@@ -82,6 +85,8 @@ type ExternalDNSStatus struct {
 
 	Conditions []OperatorCondition `json:"conditions,omitempty"`
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // ExternalDNSList contains a list of ExternalDNS
 type ExternalDNSList struct {
