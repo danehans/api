@@ -83,7 +83,7 @@ type ProviderSpec struct {
 	// If empty, defaults to infrastructure.config/cluster .status.platform.
 	//
 	// +optional
-	Type ProviderType `json:"type,omitempty"`
+	Type *ProviderType `json:"type,omitempty"`
 
 	// zoneIDFilter is a comma separated list of target DNS zone
 	// IDs to include for managing external DNS resource records.
@@ -125,11 +125,12 @@ const (
 )
 
 type ExternalDNSStatus struct {
-	// provider is the ExternalDNS provider in use.
-	Provider string `json:"provider"`
-
 	// baseDomain is the baseDomain in use.
 	BaseDomain string `json:"baseDomain"`
+
+	// providerType is the type of ExternalDNS provider
+	// in use.
+	ProviderType *ProviderType `json:"provider,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

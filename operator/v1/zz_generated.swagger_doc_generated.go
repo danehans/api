@@ -218,8 +218,8 @@ func (ExternalDNSSpec) SwaggerDoc() map[string]string {
 }
 
 var map_ExternalDNSStatus = map[string]string{
-	"provider":   "provider is the ExternalDNS provider in use.",
 	"baseDomain": "baseDomain is the baseDomain in use.",
+	"provider":   "providerType is the type of ExternalDNS provider in use.",
 }
 
 func (ExternalDNSStatus) SwaggerDoc() map[string]string {
