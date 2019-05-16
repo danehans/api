@@ -1573,8 +1573,8 @@ func (in *ProviderSpec) DeepCopyInto(out *ProviderSpec) {
 		*out = new(ProviderType)
 		**out = **in
 	}
-	if in.ZoneIDFilter != nil {
-		in, out := &in.ZoneIDFilter, &out.ZoneIDFilter
+	if in.ZoneFilter != nil {
+		in, out := &in.ZoneFilter, &out.ZoneFilter
 		*out = make([]configv1.DNSZone, len(*in))
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])

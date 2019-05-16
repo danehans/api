@@ -85,13 +85,13 @@ type ProviderSpec struct {
 	// +optional
 	Type *ProviderType `json:"type,omitempty"`
 
-	// zoneIDFilter is a comma separated list of target DNS zone
-	// IDs to include for managing external DNS resource records.
+	// zoneFilter is a comma separated list of target DNSZone's
+	// to include for managing external DNS resource records.
 	//
 	// If empty, defaults to dns.config/cluster .spec.privateZone.
 	//
 	// +optional
-	ZoneIDFilter []configv1.DNSZone `json:"zoneIDFilter,omitempty"`
+	ZoneFilter []configv1.DNSZone `json:"zoneFilter,omitempty"`
 
 	// args is the list of configuration arguments used for the provider.
 	//
