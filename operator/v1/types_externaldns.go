@@ -91,7 +91,7 @@ type ProviderSpec struct {
 	// If empty, defaults to dns.config/cluster .spec.privateZone.
 	//
 	// +optional
-	ZoneFilter []configv1.DNSZone `json:"zoneFilter,omitempty"`
+	ZoneFilter []*configv1.DNSZone `json:"zoneFilter,omitempty"`
 
 	// args is the list of configuration arguments used for the provider.
 	//

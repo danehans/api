@@ -1575,9 +1575,13 @@ func (in *ProviderSpec) DeepCopyInto(out *ProviderSpec) {
 	}
 	if in.ZoneFilter != nil {
 		in, out := &in.ZoneFilter, &out.ZoneFilter
-		*out = make([]configv1.DNSZone, len(*in))
+		*out = make([]*configv1.DNSZone, len(*in))
 		for i := range *in {
-			(*in)[i].DeepCopyInto(&(*out)[i])
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(configv1.DNSZone)
+				(*in).DeepCopyInto(*out)
+			}
 		}
 	}
 	if in.Args != nil {
