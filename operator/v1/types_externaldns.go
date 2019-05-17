@@ -60,6 +60,13 @@ type ExternalDNSSpec struct {
 	// +optional
 	Sources []*SourceType `json:"sources,omitempty"`
 
+	// zoneType...
+	//
+	// If empty, defaults to PrivateZoneType.
+	//
+	// +optional
+	ZoneType *ZoneType `json:"zoneType,omitempty"`
+
 	// provider is the specification of the DNS provider where DNS records
 	// will be created.
 	//
@@ -75,6 +82,17 @@ const (
 	// serviceType limits sources for creating records to the Kubernetes
 	// Service resource type.
 	ServiceType SourceType = "service"
+)
+
+// zoneType...
+type ZoneType string
+
+const (
+	// publicZoneType...
+	PublicZoneType ZoneType = "public"
+
+	// privateType...
+	PrivateZoneType ZoneType = "private"
 )
 
 type ProviderSpec struct {

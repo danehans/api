@@ -562,6 +562,11 @@ func (in *ExternalDNSSpec) DeepCopyInto(out *ExternalDNSSpec) {
 			}
 		}
 	}
+	if in.ZoneType != nil {
+		in, out := &in.ZoneType, &out.ZoneType
+		*out = new(ZoneType)
+		**out = **in
+	}
 	in.Provider.DeepCopyInto(&out.Provider)
 	return
 }
