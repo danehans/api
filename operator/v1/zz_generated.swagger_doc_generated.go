@@ -170,6 +170,54 @@ func (DNSStatus) SwaggerDoc() map[string]string {
 	return map_DNSStatus
 }
 
+var map_DNSEndpoint = map[string]string{
+	"": "DNSEndpoint is the Schema for the dnsendpoints API",
+}
+
+func (DNSEndpoint) SwaggerDoc() map[string]string {
+	return map_DNSEndpoint
+}
+
+var map_DNSEndpointList = map[string]string{
+	"": "DNSEndpointList contains a list of DNSEndpoint",
+}
+
+func (DNSEndpointList) SwaggerDoc() map[string]string {
+	return map_DNSEndpointList
+}
+
+var map_DNSEndpointSpec = map[string]string{
+	"":          "DNSEndpointSpec defines the desired state of DNSEndpoint",
+	"endpoints": "Endpoints is the list of DNS records to create/update",
+}
+
+func (DNSEndpointSpec) SwaggerDoc() map[string]string {
+	return map_DNSEndpointSpec
+}
+
+var map_DNSEndpointStatus = map[string]string{
+	"":                   "DNSEndpointStatus defines the observed state of DNSEndpoint",
+	"observedGeneration": "ObservedGeneration is the generation observed by the external-dns controller.",
+}
+
+func (DNSEndpointStatus) SwaggerDoc() map[string]string {
+	return map_DNSEndpointStatus
+}
+
+var map_Endpoint = map[string]string{
+	"":                 "Endpoint represents a single DNS record",
+	"dnsName":          "The hostname of the DNS record",
+	"targets":          "The targets the DNS record points to",
+	"recordType":       "RecordType type of record, e.g. CNAME, A, SRV, TXT etc",
+	"recordTTL":        "TTL for the record",
+	"labels":           "Labels stores labels defined for the Endpoint",
+	"providerSpecific": "ProviderSpecific stores provider specific config",
+}
+
+func (Endpoint) SwaggerDoc() map[string]string {
+	return map_Endpoint
+}
+
 var map_Etcd = map[string]string{
 	"": "Etcd provides information to configure an operator to manage kube-apiserver.",
 }

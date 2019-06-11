@@ -62,6 +62,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&IngressControllerList{},
 		&ExternalDNS{},
 		&ExternalDNSList{},
+		&DNSEndpoint{},
+		&DNSEndpointList{},
 	)
 
 	return nil
