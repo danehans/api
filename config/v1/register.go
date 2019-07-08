@@ -62,6 +62,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ProxyList{},
 		&Scheduler{},
 		&SchedulerList{},
+		&SecurityProfile{},
+		&SecurityProfileList{},
 	)
 	metav1.AddToGroupVersion(scheme, GroupVersion)
 	return nil
